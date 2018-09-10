@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="urn:DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="urn:DefaultNamespace" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:DefaultNamespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:DefaultNamespace">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="DANEZGLOSZENIA">
+        <xsd:sequence>
+          <xsd:element name="OPIS" type="xsd:string" />
+          <xsd:element name="STATUS" type="xsd:string" />
+          <xsd:element name="ODPOWIEDZIALNY" type="xsd:string" />
+          <xsd:element name="BLAD" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DODAJKOMENTARZResponse">
+    <wsdl:part name="DODAJKOMENTARZReturn" type="xsd:anyType" />
+  </wsdl:message>
+  <wsdl:message name="DODAJKOMENTARZRequest">
+    <wsdl:part name="NUMER_ZGLOSZENIA" type="xsd:string" />
+    <wsdl:part name="KOMENTARZ" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="STATUSZGLOSZENIARequest">
+    <wsdl:part name="NUMER_ZGLOSZENIA" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="STATUSZGLOSZENIAResponse">
+    <wsdl:part name="STATUSZGLOSZENIAReturn" type="impl:DANEZGLOSZENIA" />
+  </wsdl:message>
+  <wsdl:portType name="InfZglPort">
+    <wsdl:operation name="STATUSZGLOSZENIA" parameterOrder="NUMER_ZGLOSZENIA">
+      <wsdl:input name="STATUSZGLOSZENIARequest" message="impl:STATUSZGLOSZENIARequest" />
+      <wsdl:output name="STATUSZGLOSZENIAResponse" message="impl:STATUSZGLOSZENIAResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DODAJKOMENTARZ" parameterOrder="NUMER_ZGLOSZENIA KOMENTARZ">
+      <wsdl:input name="DODAJKOMENTARZRequest" message="impl:DODAJKOMENTARZRequest" />
+      <wsdl:output name="DODAJKOMENTARZResponse" message="impl:DODAJKOMENTARZResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InfZglPortNameSoapBinding" type="impl:InfZglPort">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="STATUSZGLOSZENIA">
+      <wsdlsoap:operation soapAction="STATUSZGLOSZENIA" />
+      <wsdl:input name="STATUSZGLOSZENIARequest">
+        <wsdlsoap:body use="encoded" namespace="urn:DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="STATUSZGLOSZENIAResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DODAJKOMENTARZ">
+      <wsdlsoap:operation soapAction="DODAJKOMENTARZ" />
+      <wsdl:input name="DODAJKOMENTARZRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="DODAJKOMENTARZResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InfZglElementName">
+    <wsdl:port name="InfZglPortName" binding="impl:InfZglPortNameSoapBinding">
+      <wsdlsoap:address location="https://domino.aquael.pl:443/7B/helpdesk_it.nsf/InfZgl?OpenWebService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

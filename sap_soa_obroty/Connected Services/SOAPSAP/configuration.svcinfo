@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.CustomBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;ZPK_CRM_RAPORTY&quot;&gt;&lt;httpTransport /&gt;&lt;textMessageEncoding messageVersion=&quot;Soap11&quot; /&gt;&lt;/Data&gt;" bindingType="customBinding" name="ZPK_CRM_RAPORTY" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://er1.aquael.pl:8000/sap/bc/srt/rfc/sap/zpk_crm_raporty/001/zpk_crm_raporty/zpk_crm_raporty&quot; binding=&quot;customBinding&quot; bindingConfiguration=&quot;ZPK_CRM_RAPORTY&quot; contract=&quot;SOAPSAP.ZPK_CRM_RAPORTY&quot; name=&quot;ZPK_CRM_RAPORTY&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://er1.aquael.pl:8000/sap/bc/srt/rfc/sap/zpk_crm_raporty/001/zpk_crm_raporty/zpk_crm_raporty&quot; binding=&quot;customBinding&quot; bindingConfiguration=&quot;ZPK_CRM_RAPORTY&quot; contract=&quot;SOAPSAP.ZPK_CRM_RAPORTY&quot; name=&quot;ZPK_CRM_RAPORTY&quot; /&gt;" contractName="SOAPSAP.ZPK_CRM_RAPORTY" name="ZPK_CRM_RAPORTY" />
+  </endpoints>
+</configurationSnapshot>
